@@ -29,7 +29,7 @@ id = setInterval(function () {
         idx.add(questions[i++]);
         self.postMessage({ type: 'progress', data: Math.round((i / len) * 100) });
     }
-}, 500);
+}, 100);
 
 self.onmessage = function (event) {
     var query = event.data;

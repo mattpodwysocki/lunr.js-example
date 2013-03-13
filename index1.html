@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>lunr example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+      .loading {
+        border: 1px solid red;
+        font-size: 10px;
+        color: red;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <p>This demo consists of 100 questions taken from stack overflow, they are listed on the left hand side.  Clicking on the headings will display the full question on the right hand side of the page.</p>
+
+        <p>Each question contains a heading, a list of tags and the body of the question.  All three fields are in the index and you can search using any words you want.</p>
+
+        <p class="loading">The index is currently being loaded, you can still search but currently not all the data has been indexed. <span data-bind="text: progress"></span> % complete.</p>
+      </div>
+      <div class="row">
+        <input type="search" placeholder="Search..." data-bind="value: searchInput">
+        <button class="btn" data-bind="click: search">Search</button>
+        <button class="btn" data-bind="click: clear">Clear</button>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <ul data-bind="foreach: searchData">
+            <li>
+              <h2><a data-target="#" data-bind="text: title, click: $parent.selectSingleQuestion"></a></h2>
+              <p data-bind="text: tags"></p>
+            </li>
+          </ul>
+        </div>
+        <div class="span8">
+          <h1 data-bind="text: title"></h1>
+          <p data-bind="text: tags"></p>
+          <div data-bind="html: body"></div>
+        </div>
+      </div>
+    </div>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/knockout-2.2.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/example_data.js"></script>
+    <script src="js/example_index.js"></script>
+    <script src="js/lunr.js"></script>
+    <script src="js/app1.js"></script>
+  </body>
+</html>
